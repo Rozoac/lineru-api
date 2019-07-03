@@ -39,21 +39,18 @@ app.get("/usuario", mdAutenticacion.verificaToken, (req, res, next) => {
 app.get("/usuario/:id", (req, res, next) => {
   var id = req.params.id;
 
-  Usuario.findById(id, (err, usuario) =>{
+  Usuario.findById(id)
+  .populate("creditos")
+  .exec((err, usuario) => {
     if (err) {
-            return res.status(500).json({
-              ok: false,
-              mensaje: "Error al buscar usuario",
-              error: err
-            });
-          }
-          if (!usuario) {
-                  return res.status(400).json({
-                    ok: false,
-                    mensaje: "El usuario con el id" + id + "no existe",
-                    error: "No existe un usuario con ese ID"
-                  });
-                }
+      return res
+        .status(500)
+        .json({
+          ok: false,
+          mensaje: "Error cargando usuario",
+          error: err
+        });
+    }
 
       res.status(200).json({
         ok: true,
