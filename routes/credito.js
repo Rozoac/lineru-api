@@ -31,6 +31,50 @@ app.get("/credito", (req, res) => {
 });
 
 // =============================
+// ACTUALIZAR CREDITO
+// =============================
+
+app.put("/credito/:id", (req, res) => {
+  var id = req.params.id;
+
+  Credito.findById(id, (err, credito) => {
+    if (err) {
+      return res.status(500).json({
+        ok: false,
+        mensaje: "Error al buscar credito",
+        error: err
+      });
+    }
+
+    if (!credito) {
+      return res.status(400).json({
+        ok: false,
+        mensaje: "El credito con el id" + id + "no existe",
+        error: "No existe un credito con ese ID"
+      });
+    }
+
+    credito.pagoCredito = true;
+    
+    credito.save((err, creditoGuardado) => {
+      if (err) {
+        return res.status(500).json({
+          ok: false,
+          mensaje: "Error al actualizar credito",
+          error: err
+        });
+      }
+      res.status(200).json({
+        ok: true,
+        credito: creditoGuardado
+      });
+    });
+  });
+});
+
+
+
+// =============================
 // Crear un credito nuevo
 // =============================
 
