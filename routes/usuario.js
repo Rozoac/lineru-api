@@ -32,6 +32,35 @@ app.get("/usuario", mdAutenticacion.verificaToken, (req, res, next) => {
     });
   });
 });
+// =============================
+// OBTENER USUARIO POR ID
+// =============================
+
+app.get("/usuario/:id", (req, res, next) => {
+
+
+  Usuario.findById(id, (err, usuario) =>{
+    if (err) {
+            return res.status(500).json({
+              ok: false,
+              mensaje: "Error al buscar usuario",
+              error: err
+            });
+          }
+          if (!usuario) {
+                  return res.status(400).json({
+                    ok: false,
+                    mensaje: "El usuario con el id" + id + "no existe",
+                    error: "No existe un usuario con ese ID"
+                  });
+                }
+
+      res.status(200).json({
+        ok: true,
+        usuario: usuario,
+      });
+  });
+});
 
 // =============================
 // ACTUALIZAR USUARIO
@@ -114,7 +143,7 @@ app.post("/usuario",  (req, res) => {
 // borrar un usuario
 // =============================
 
-app.delete("/usuario/:id", mdAutenticacion.verificaToken, (req, res) => {
+app.delete("/usuario/:id", (req, res) => {
   var id = req.params.id;
 
   Usuario.findByIdAndRemove(id, (err, usuarioBorrado) => {
