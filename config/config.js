@@ -13,9 +13,9 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
 let urlDB;
 
 if (process.env.NODE_ENV === 'dev') {
-    urlDB = 'mongodb://localhost:27017/ikusi'
+    urlDB = 'mongodb://localhost:27017/lineru'
 } else {
-    urlDB = "mongodb://ikusi-admin:wmso7sMfpA@ds241723.mlab.com:41723/ikusi";
+    urlDB = "mongodb://rozoac:lineru2019@ds213199.mlab.com:13199/lineru";
 }
 
 process.env.URLDB = urlDB;
