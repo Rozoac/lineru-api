@@ -37,7 +37,7 @@ app.get("/usuario", mdAutenticacion.verificaToken, (req, res, next) => {
 // =============================
 
 app.get("/usuario/:id", (req, res, next) => {
-
+  var id = req.params.id;
 
   Usuario.findById(id, (err, usuario) =>{
     if (err) {
