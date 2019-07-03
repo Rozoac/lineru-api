@@ -73,7 +73,7 @@ app.put("/credito/:id", (req, res) => {
 });
 
 // =============================
-// RECHAZAR CREDITO
+// ACTUALIZAR CREDITO
 // =============================
 
 app.put("/credito/:id", (req, res) => {
@@ -96,7 +96,7 @@ app.put("/credito/:id", (req, res) => {
       });
     }
 
-    credito.estadoDeCredito = true;
+    credito.pagoCredito = true;
     
     credito.save((err, creditoGuardado) => {
       if (err) {
