@@ -54,7 +54,8 @@ app.put("/credito/:id", (req, res) => {
       });
     }
 
-    credito.pagoCredito = true;
+    credito.pagoCredito = req.body.pagoCredito;
+    credito.estadoDeCredito = req.body.estadoDeCredito;
     
     credito.save((err, creditoGuardado) => {
       if (err) {
