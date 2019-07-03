@@ -95,8 +95,6 @@ app.post("/usuario",  (req, res) => {
     correo: body.correo,
     clave: bcrypt.hashSync(body.clave, 10),
     cedula: body.cedula,
-    valorSolicitado: body.valorSolicitado,
-    fechaPagar: body.fechaPagar
   });
 
   usuario.save((err, usuarioGuardado) => {

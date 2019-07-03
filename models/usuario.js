@@ -11,7 +11,7 @@ var usuarioSchema = new schema({
   nombre: {type: String, required: [true, 'El nombre es obligatorio']},
   correo: {type: String, unique:[true, 'El correo debe ser unico'], required: [true, 'El correo es necesario']},
   clave: {type: String, required: [true, 'La clave es necesaria']},
-  cedula: { type: Number,unique:[true, 'El correo debe ser unico'], required: [true, 'La cedula es obligatorio']},
+  cedula: { type: String,unique:[true, 'El correo debe ser unico'], required: [true, 'La cedula es obligatorio']},
   creditos: [{type: ObjectId, ref: 'Credito'}],
   estadoDeCredito: {type: String, enum: estadosValidos, default: 'APROBADO', required: true},
 
