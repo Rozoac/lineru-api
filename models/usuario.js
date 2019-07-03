@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var schema = mongoose.Schema;
+const { ObjectId } = schema.Types;
 
 var estadosValidos = {
   values: ['APROBADO', 'RECHAZADO'],
@@ -11,10 +12,9 @@ var usuarioSchema = new schema({
   correo: {type: String, unique:[true, 'El correo debe ser unico'], required: [true, 'El correo es necesario']},
   clave: {type: String, required: [true, 'La clave es necesaria']},
   cedula: { type: Number,unique:[true, 'El correo debe ser unico'], required: [true, 'La cedula es obligatorio']},
-  valorSolicitado: {type: Number, required: [true, 'El valor solicitado es obligatorio']},
-  fechaPagar: {type: Date, required:false },
+  creditos: [{type: ObjectId, ref: 'Credito'}],
   estadoDeCredito: {type: String, enum: estadosValidos, default: 'APROBADO', required: true},
-  pagoCredito:{ type: Boolean, required: true, default: true},
+
 
 
 });
