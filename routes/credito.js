@@ -53,9 +53,12 @@ app.put("/credito/:id", (req, res) => {
         error: "No existe un credito con ese ID"
       });
     }
+    if(req.body.pagoCredito){
+      credito.pagoCredito = req.body.pagoCredito;
+    }else{
+      credito.estadoDeCredito = req.body.estadoDeCredito;
+    }
 
-    credito.pagoCredito = req.body.pagoCredito;
-    credito.estadoDeCredito = req.body.estadoDeCredito;
     
     credito.save((err, creditoGuardado) => {
       if (err) {
