@@ -54,9 +54,9 @@ app.put("/credito/:id", (req, res) => {
       });
     }
     if(req.body.pagoCredito){
-      credito.pagoCredito = req.body.pagoCredito;
+      credito.pagoCredito = req.body.data;
     }else{
-      credito.estadoDeCredito = req.body.estadoDeCredito;
+      credito.estadoDeCredito = req.body.data;
     }
 
     
