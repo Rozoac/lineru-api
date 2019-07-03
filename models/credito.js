@@ -11,7 +11,7 @@ var creditoSchema = new schema({
   valorSolicitado: {type: Number, required: [true, 'El valor solicitado es obligatorio']},
   fechaPagar: {type: Date, required:false },
   pagoCredito:{ type: Boolean, required: true, default: false},
-  estadoDeCredito: {type: String, enum: estadosValidos, default: 'APROBADO', required: true},
+  estadoDeCredito: {type: String, enum: estadosValidos, default: 'APROBADO', required: false},
 
 
 
